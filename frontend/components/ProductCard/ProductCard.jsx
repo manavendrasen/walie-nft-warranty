@@ -1,10 +1,14 @@
 import * as React from "react";
-import Link from "next/link";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+
+import {
+  CardActionArea,
+  Typography,
+  CardContent,
+  Card,
+  Link,
+  CardMedia,
+  Box,
+} from "@mui/material";
 
 export default function ProductCard() {
   return (
@@ -21,7 +25,12 @@ export default function ProductCard() {
             <Typography gutterBottom variant="h6" component="h6">
               APPLE 2020 Macbook Pro M1 - (8 GB/256 GB SSD)
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Box
+              sx={{
+                color: "grey",
+                lineHeight: "1.50",
+              }}
+            >
               <ul>
                 <li>Apple M2 Processor</li>
                 <li>8 GB Unified Memory RAM Mac OS Operating</li>
@@ -30,7 +39,7 @@ export default function ProductCard() {
                 <li>33.78 cm (13.3 Inch) Display</li>
                 <li>1 Year Limited Warranty</li>
               </ul>
-            </Typography>
+            </Box>
           </CardContent>
         </CardActionArea>
       </Card>
