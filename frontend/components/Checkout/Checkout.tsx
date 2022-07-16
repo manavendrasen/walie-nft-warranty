@@ -15,7 +15,7 @@ import Review from "./Review";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-function getStepContent(step) {
+function getStepContent(step: number) {
   switch (step) {
     case 0:
       return <AddressForm />;

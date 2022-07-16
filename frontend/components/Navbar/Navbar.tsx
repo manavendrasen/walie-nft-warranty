@@ -14,9 +14,18 @@ const Navbar = () => {
     >
       <Toolbar>
         <Container>
-          <Typography variant="h6" color="inherit" noWrap>
-            <Link href="/">E-Commerce Store</Link>
-          </Typography>
+          <Link href="/">
+            <Typography
+              variant="h6"
+              color="inherit"
+              noWrap
+              sx={{
+                cursor: "pointer",
+              }}
+            >
+              E-Commerce Store
+            </Typography>
+          </Link>
         </Container>
       </Toolbar>
     </AppBar>
