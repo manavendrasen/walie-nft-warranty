@@ -5,6 +5,7 @@ const Document = () => {
   return (
     <Html lang="en">
       <Head>
+        <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#2874f0" />
         <meta
           name="apple-mobile-web-app-status-bar-style"

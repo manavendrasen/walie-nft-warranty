@@ -1,15 +1,12 @@
 import React from "react";
-import Head from "next/head";
 import Checkout from "../components/Checkout/Checkout";
+import Head from "../components/Head/Head";
 import Navbar from "../components/Navbar/Navbar";
 
 const CheckoutPage = () => {
   return (
     <>
-      <Head>
-        <title>Checkout</title>
-        <meta name="description" content="Checkout Page" />
-      </Head>
+      <Head title="Checkout | E-Commerce Store" description="Checkout" />
       <Navbar />
       <Checkout />
     </>

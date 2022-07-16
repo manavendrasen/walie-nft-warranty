@@ -1,13 +1,14 @@
-import * as React from "react";
-
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Paper from "@mui/material/Paper";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import React, { useState } from "react";
+import {
+  Typography,
+  Button,
+  StepLabel,
+  Step,
+  Stepper,
+  Paper,
+  Container,
+  Box,
+} from "@mui/material";
 
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
@@ -29,7 +30,7 @@ function getStepContent(step: number) {
 }
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState<number>(0);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
