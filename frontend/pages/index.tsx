@@ -111,7 +111,7 @@ const Home = () => {
                   </Button>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6}></Grid>
+              {/* <Grid item xs={12} sm={6}></Grid> */}
             </Grid>
           </Container>
         </section>
