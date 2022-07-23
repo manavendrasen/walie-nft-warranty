@@ -5,7 +5,7 @@ import { Grid, Container, Typography, Box, Button } from "@mui/material";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Navbar from "../components/Navbar/Navbar";
 import Head from "../components/Head/Head";
-import Logo from "../public/icon-192x192.png";
+import Logo from "../public/android-icon-192x192.png";
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
         <header>
           <Container
             sx={{
-              paddingY: 2,
+              paddingY: 4,
             }}
           >
             <Box
@@ -30,9 +30,10 @@ const Home = () => {
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
+                  gap: 1,
                 }}
               >
-                <Image src={Logo} width={64} height={64} layout="fixed" />
+                <Image src={Logo} width={36} height={36} layout="fixed" />
                 <Typography variant="h6" fontWeight="semibold" color="#1e293b">
                   Walie.
                 </Typography>

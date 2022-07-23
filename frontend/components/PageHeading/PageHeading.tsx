@@ -42,7 +42,7 @@ export const PageHeading: React.FC<IPageHeadingProps> = ({
               <Typography
                 variant="h6"
                 fontWeight="semibold"
-                color="primary.main"
+                color="primary.light"
                 sx={{ cursor: "pointer" }}
               >
                 Walie.
