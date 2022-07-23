@@ -7,7 +7,7 @@ const CheckoutPage = () => {
   return (
     <>
       <Head title="Checkout | E-Commerce Store" description="Checkout" />
-      <Navbar />
+      <Navbar title="Checkout | E-Commerce Store" />
       <Checkout />
     </>
   );
