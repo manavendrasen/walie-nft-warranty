@@ -2,7 +2,11 @@ import React from "react";
 import { AppBar, Toolbar, Container, Typography } from "@mui/material";
 import Link from "next/link";
 
-const Navbar = () => {
+interface NavbarProps {
+  title: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ title }) => {
   return (
     <AppBar
       position="absolute"
@@ -23,7 +27,7 @@ const Navbar = () => {
                 cursor: "pointer",
               }}
             >
-              E-Commerce Store
+              {title}
             </Typography>
           </Link>
         </Container>
@@ -31,5 +35,7 @@ const Navbar = () => {
     </AppBar>
   );
 };
+
+
 
 export default Navbar;

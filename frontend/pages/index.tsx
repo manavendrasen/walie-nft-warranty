@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Grid, Container, Typography, Box, Button } from "@mui/material";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Navbar from "../components/Navbar/Navbar";
 import Head from "../components/Head/Head";
 import Logo from "../public/icon-192x192.png";
-import Link from "next/link";
 
 const Home = () => {
   return (
     <>
-      <Head title="Cart | E-Commerce Store" description="E-Commerce Store" />
+      <Head title="Walie - Digital Warranty" description="E-Commerce Store" />
       <main>
         <header>
           <Container
@@ -29,6 +29,7 @@ const Home = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
+                  cursor: "pointer",
                 }}
               >
                 <Image src={Logo} width={64} height={64} layout="fixed" />
@@ -39,11 +40,11 @@ const Home = () => {
               <Box
                 sx={{
                   display: "flex",
-                  gap: 2,
+                  gap: 3,
                   alignItems: "center",
                 }}
               >
-                <Link href="/">
+                <Link href="/my-warranty">
                   <Typography
                     color="#475569"
                     sx={{
@@ -76,16 +77,26 @@ const Home = () => {
             }}
           >
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="h3" fontWeight="semibold">
-                  The smartest way of{" "}
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: ["center", "start"],
+                  textAlign: ["center", "start"],
+                }}
+              >
+                <Typography variant="h3" fontWeight="medium">
+                  The smartest way to{" "}
                   <span
                     style={{
-                      color: "#8951FF",
+                      color: "#4f46e5",
                     }}
                   >
                     {" "}
-                    protecting your product.
+                    protect your product.
                   </span>
                 </Typography>
                 <Typography color="#475569" sx={{ mt: 2 }}>
@@ -105,7 +116,7 @@ const Home = () => {
                       px: 3,
                       py: 2,
                     }}
-                    color="secondary"
+                    color="primary"
                   >
                     Get Started
                   </Button>

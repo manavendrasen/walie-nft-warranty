@@ -39,7 +39,7 @@ const ECommerceDemo = () => {
   return (
     <>
       <Head title="Cart | E-Commerce Store" description="E-Commerce Store" />
-      <Navbar />
+      <Navbar title="Cart | E-Commerce Store" />
       <main>
         <Container sx={{ py: 12 }}>
           <Typography variant="h5" sx={{ my: 3, fontWeight: "bold" }}>

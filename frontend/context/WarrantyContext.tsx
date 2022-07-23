@@ -1,11 +1,5 @@
-import React, {
-  useEffect,
-  useState,
-  createContext,
-  useContext,
-  useMemo,
-} from "react";
-import { NextRouter } from "next/router";
+import React, { useEffect, useState, createContext, useMemo } from "react";
+import { NextRouter, useRouter } from "next/router";
 import { ethers } from "ethers";
 import { useMoralis } from "react-moralis";
 // import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../constants/contract";
@@ -15,7 +9,8 @@ interface WarrantyContextType {
   getContract: () => void;
   isWeb3Enabled: boolean;
   account: null | string;
-  connectWallet: (router: NextRouter) => void;
+  connectWallet: () => void;
+  loading: boolean;
 }
 
 export const WarrantyContext = createContext<WarrantyContextType>({
@@ -24,6 +19,7 @@ export const WarrantyContext = createContext<WarrantyContextType>({
   isWeb3Enabled: false,
   account: null,
   connectWallet: () => {},
+  loading: false,
 });
 
 interface WarrantyProviderProps {
@@ -38,12 +34,15 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
   const [connection, setConnection] = useState<
     null | typeof ethers.providers.Web3Provider
   >(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (isWeb3Enabled) return;
     if (typeof window !== undefined)
       if (window.localStorage.getItem("WEB_3_CONNECTED")) {
         enableWeb3();
+        // router.replace("/my-warranty");
       }
   }, [isWeb3Enabled]);
 
@@ -56,14 +55,17 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
     });
   }, []);
 
-  const connectWallet = async (router: NextRouter) => {
+  const connectWallet = async () => {
     try {
+      setLoading(true);
       await enableWeb3();
       if (typeof window !== undefined)
         window.localStorage.setItem("WEB_3_CONNECTED", "TRUE");
       // router.push("/wallet");
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -76,6 +78,7 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
       getContract,
       account,
       connectWallet,
+      loading,
     }),
     [connection, isWeb3Enabled, account]
   );
