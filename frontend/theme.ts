@@ -6,11 +6,11 @@ const theme = createTheme({
       main: "#2874f0",
     },
     secondary: {
-      main: "#ffe11b",
+      main: "#201D55",
     },
   },
   shape: {
-    borderRadius: 4,
+    borderRadius: 8,
   },
   typography: {
     fontFamily: "Inter",
