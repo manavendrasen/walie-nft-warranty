@@ -121,6 +121,17 @@ const Home = () => {
                   >
                     Get Started
                   </Button>
+                  <Link href="/demo/e-commerce/">
+                    <Button
+                      sx={{
+                        px: 3,
+                        py: 2,
+                      }}
+                      color="primary"
+                    >
+                      E-Commerce Demo
+                    </Button>
+                  </Link>
                 </Box>
               </Grid>
               {/* <Grid item xs={12} sm={6}></Grid> */}

@@ -20,11 +20,12 @@ const Navbar: React.FC<NavbarProps> = ({ title }) => {
         <Container>
           <Link href="/">
             <Typography
-              variant="h6"
+              variant="body1"
               color="inherit"
               noWrap
               sx={{
                 cursor: "pointer",
+                fontWeight: "semibold",
               }}
             >
               {title}

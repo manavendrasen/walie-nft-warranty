@@ -41,73 +41,57 @@ export default function Checkout() {
   };
 
   return (
-    <Box
-      sx={{
-        background: "#f8fafc",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        paddingTop: 12,
-      }}
-    >
-      <Container component="main" maxWidth="md">
-        <Paper
-          variant="outlined"
-          sx={{ py: { xs: 3, md: 8 }, p: { xs: 2, md: 4 }, borderRadius: 4 }}
-        >
-          <Typography
-            component="h5"
-            variant="h5"
-            sx={{
-              fontWeight: "bold",
-              mb: 2,
-            }}
-          >
-            Checkout
+    <Box>
+      <Typography
+        component="h5"
+        variant="h5"
+        sx={{
+          fontWeight: "bold",
+          mb: 2,
+        }}
+      >
+        Checkout
+      </Typography>
+      <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+        {steps.map(label => (
+          <Step key={label}>
+            <StepLabel sx={{ fontSize: 20 }}>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+
+      {activeStep === steps.length ? (
+        <div>
+          <Typography variant="h5" gutterBottom>
+            Thank you for your order.
           </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map(label => (
-              <Step key={label}>
-                <StepLabel sx={{ fontSize: 16 }}>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
+          <Typography variant="subtitle1">
+            Your order number is #2001539. We have emailed your order
+            confirmation, and will send you an update when your order has
+            shipped.
+          </Typography>
+        </div>
+      ) : (
+        <>
+          {getStepContent(activeStep)}
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            {activeStep !== 0 && (
+              <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                Back
+              </Button>
+            )}
 
-          {activeStep === steps.length ? (
-            <div>
-              <Typography variant="h5" gutterBottom>
-                Thank you for your order.
-              </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
-              </Typography>
-            </div>
-          ) : (
-            <>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Back
-                  </Button>
-                )}
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                >
-                  {activeStep === steps.length - 1 ? "Place order" : "Next"}
-                </Button>
-              </Box>
-            </>
-          )}
-        </Paper>
-      </Container>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleNext}
+              sx={{ mt: 3, ml: 1 }}
+            >
+              {activeStep === steps.length - 1 ? "Place order" : "Next"}
+            </Button>
+          </Box>
+        </>
+      )}
     </Box>
   );
 }

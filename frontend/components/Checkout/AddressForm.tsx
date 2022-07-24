@@ -1,103 +1,57 @@
 import * as React from "react";
+import Image from "next/image";
+import { Stack, Button, Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Logo from "../../public/android-icon-192x192.png";
 
 export default function AddressForm() {
   return (
-    <>
-      <Typography variant="h6" gutterBottom>
-        Shipping address
-      </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="firstName"
-            name="firstName"
-            label="First name"
-            fullWidth
-            autoComplete="given-name"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
-            autoComplete="family-name"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="address1"
-            name="address1"
-            label="Address line 1"
-            fullWidth
-            autoComplete="shipping address-line1"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth
-            autoComplete="shipping address-line2"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="shipping address-level2"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
-            fullWidth
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth
-            autoComplete="shipping postal-code"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="shipping country"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item xs={12}>
+    <Grid container spacing={3}>
+      <Grid item xs={12} sm={12}>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<Button>Change</Button>}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Stack direction="column">
+              <Typography>
+                Deliver to: <span style={{ fontWeight: 600 }}> John Doe</span>
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  color: "#475569",
+                }}
+              >
+                1771 Garfield Road, Bangalore, Karnataka, 560025
+              </Typography>
+            </Stack>
+          </AccordionSummary>
+        </Accordion>
+      </Grid>
+      <Grid item xs={12}>
+        <Paper
+          sx={{
+            padding: 3,
+          }}
+        >
+          <Stack direction="row" spacing={1.5} alignItems="center" mb={2}>
+            <Image src={Logo} width={36} height={36} layout="fixed" />
+            <Stack>
+              <Typography fontWeight="semibold">
+                Smart Warranty powered by Walie.
+              </Typography>
+              <Typography variant="body2" color="#475569">
+                Protect your product, enter your wallet address and we will send
+                the warranty over.
+              </Typography>
+            </Stack>
+          </Stack>
           <TextField
             required
             id="wallet"
@@ -106,17 +60,10 @@ export default function AddressForm() {
             fullWidth
             autoComplete=""
             variant="outlined"
+            size="small"
           />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={
-              <Checkbox color="secondary" name="saveAddress" value="yes" />
-            }
-            label="Use this address for payment details"
-          />
-        </Grid>
+        </Paper>
       </Grid>
-    </>
+    </Grid>
   );
 }

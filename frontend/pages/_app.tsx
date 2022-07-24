@@ -6,14 +6,17 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "../theme";
 import { WarrantyProvider } from "../context/WarrantyContext";
+import { ProductProvider } from "../context/ProductContext";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <MoralisProvider initializeOnMount={false}>
         <WarrantyProvider>
-          <CssBaseline />
-          <Component {...pageProps} />
+          <ProductProvider>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ProductProvider>
         </WarrantyProvider>
       </MoralisProvider>
     </ThemeProvider>
