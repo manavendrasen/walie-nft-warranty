@@ -1,5 +1,12 @@
 import React, { useContext } from "react";
-import { Grid, Container, Typography, Button } from "@mui/material";
+import {
+  Grid,
+  Container,
+  Typography,
+  Button,
+  MenuItem,
+  Menu,
+} from "@mui/material";
 import Navbar from "../components/Navbar/Navbar";
 import Head from "../components/Head/Head";
 import WarrantyCard from "../components/WarrantyCard/WarrantyCard";
@@ -10,8 +17,18 @@ import { PageHeading } from "../components/PageHeading/PageHeading";
 // - make warranty object, pass props to Warranty Card similar to Product Card
 
 const Warranty = () => {
-  const { isWeb3Enabled, connectWallet, account, loading } =
+  const { isWeb3Enabled, connectWallet, account, loading, disconnectWallet } =
     useContext(WarrantyContext);
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const warranties = [
     {
       id: 1,
@@ -32,18 +49,31 @@ const Warranty = () => {
         subHeading="Aliqua aliquip ullamco aliquip nostrud laborum nulla pariatur nulla dolore laboris voluptate laboris veniam in."
       >
         {isWeb3Enabled ? (
-          <Typography
-            sx={{
-              background: "#86efac50",
-              px: 2,
-              py: 1,
-              borderRadius: 8,
-              color: "#15803d",
-            }}
-          >
-            • Connected to {account?.slice(0, 6)}...
-            {account?.slice(account.length - 4)}
-          </Typography>
+          <>
+            <Button
+              onClick={handleClick}
+              sx={{
+                background: "#86efac50",
+                px: 2,
+                py: 1,
+                borderRadius: 8,
+                color: "#15803d",
+              }}
+            >
+              • Connected to {account?.slice(0, 6)}...
+              {account?.slice(account.length - 4)}
+            </Button>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <MenuItem
+                onClick={() => {
+                  disconnectWallet();
+                  handleClose();
+                }}
+              >
+                Logout
+              </MenuItem>
+            </Menu>
+          </>
         ) : (
           <Button
             sx={{

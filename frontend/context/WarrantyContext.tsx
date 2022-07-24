@@ -2,23 +2,30 @@ import React, { useEffect, useState, createContext, useMemo } from "react";
 import { NextRouter, useRouter } from "next/router";
 import { ethers } from "ethers";
 import { useMoralis } from "react-moralis";
-// import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../constants/contract";
+import {
+  NFTWARRANTY_ABI,
+  PLATFORM_ABI,
+  PLATFORM_ADDRESS,
+  NFTWARRANTY_ADDRESS,
+} from "../config/contract";
 
 interface WarrantyContextType {
   connection: null | typeof ethers.providers.Web3Provider;
-  getContract: () => void;
+  loadContracts: () => void;
   isWeb3Enabled: boolean;
   account: null | string;
   connectWallet: () => void;
+  disconnectWallet: () => void;
   loading: boolean;
 }
 
 export const WarrantyContext = createContext<WarrantyContextType>({
   connection: null,
-  getContract: () => {},
+  loadContracts: () => {},
   isWeb3Enabled: false,
   account: null,
   connectWallet: () => {},
+  disconnectWallet: () => {},
   loading: false,
 });
 
@@ -29,12 +36,19 @@ interface WarrantyProviderProps {
 export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
   children,
 }) => {
-  const { enableWeb3, isWeb3Enabled, account, Moralis, deactivateWeb3 } =
-    useMoralis();
+  const {
+    enableWeb3,
+    isWeb3Enabled,
+    account,
+    Moralis,
+    logout,
+    deactivateWeb3,
+    isWeb3EnableLoading,
+  } = useMoralis();
   const [connection, setConnection] = useState<
     null | typeof ethers.providers.Web3Provider
   >(null);
-  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -57,28 +71,36 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
 
   const connectWallet = async () => {
     try {
-      setLoading(true);
       await enableWeb3();
       if (typeof window !== undefined)
         window.localStorage.setItem("WEB_3_CONNECTED", "TRUE");
-      // router.push("/wallet");
-      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
     }
   };
 
-  const getContract = () => {};
+  const disconnectWallet = async () => {
+    try {
+      if (typeof window !== undefined) {
+        window.localStorage.removeItem("WEB_3_CONNECTED");
+      }
+      await deactivateWeb3();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadContracts = () => {};
 
   const value = useMemo(
     () => ({
       connection,
       isWeb3Enabled,
-      getContract,
+      loadContracts,
       account,
       connectWallet,
-      loading,
+      disconnectWallet,
+      loading: isWeb3EnableLoading,
     }),
     [connection, isWeb3Enabled, account]
   );
