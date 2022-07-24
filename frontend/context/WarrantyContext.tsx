@@ -1,32 +1,38 @@
 import React, { useEffect, useState, createContext, useMemo } from "react";
 import { NextRouter, useRouter } from "next/router";
-import { ethers } from "ethers";
-import { useMoralis } from "react-moralis";
+import { useMoralis, useWeb3Contract } from "react-moralis";
+import { Contract, ethers } from "ethers";
+import { Moralis } from "moralis";
+import { create } from "ipfs-http-client";
 import {
   NFTWARRANTY_ABI,
   PLATFORM_ABI,
   PLATFORM_ADDRESS,
   NFTWARRANTY_ADDRESS,
 } from "../config/contract";
+import { Product } from "./ProductContext";
 
+const client = create({
+  url: "https://ipfs.infura.io:5001/api/v0",
+});
 interface WarrantyContextType {
-  connection: null | typeof ethers.providers.Web3Provider;
   loadContracts: () => void;
   isWeb3Enabled: boolean;
   account: null | string;
   connectWallet: () => void;
   disconnectWallet: () => void;
   loading: boolean;
+  createNFTWarranty: (product: Product, owner: string) => void;
 }
 
 export const WarrantyContext = createContext<WarrantyContextType>({
-  connection: null,
   loadContracts: () => {},
   isWeb3Enabled: false,
   account: null,
   connectWallet: () => {},
   disconnectWallet: () => {},
   loading: false,
+  createNFTWarranty: () => {},
 });
 
 interface WarrantyProviderProps {
@@ -40,14 +46,21 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
     enableWeb3,
     isWeb3Enabled,
     account,
-    Moralis,
     logout,
     deactivateWeb3,
     isWeb3EnableLoading,
+    user,
+    web3,
   } = useMoralis();
-  const [connection, setConnection] = useState<
-    null | typeof ethers.providers.Web3Provider
-  >(null);
+
+  const [nftWarrantyContract, setNftWarrantyContract] =
+    useState<null | Contract>(null);
+
+  const [platformContract, setPlatformContract] = useState<null | Contract>(
+    null
+  );
+
+  // const [provider, setProvider] = useState<null | Web3Provider>(null);
 
   const router = useRouter();
 
@@ -69,14 +82,40 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
     });
   }, []);
 
+  const loadContracts = () => {
+    try {
+      console.log("Loading Contracts");
+      // const ethers = Moralis.web3Library;
+
+      const newNftWarrantyContract = new ethers.Contract(
+        NFTWARRANTY_ADDRESS,
+        NFTWARRANTY_ABI
+      );
+
+      setNftWarrantyContract(newNftWarrantyContract);
+
+      const newPlatformContract = new ethers.Contract(
+        PLATFORM_ADDRESS,
+        PLATFORM_ABI
+      );
+
+      setPlatformContract(newPlatformContract);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const connectWallet = async () => {
     try {
+      // const web3Provider = await Moralis.enableWeb3();
+      // const signer = web3Provider.getSigner();
       await enableWeb3();
       if (typeof window !== undefined)
         window.localStorage.setItem("WEB_3_CONNECTED", "TRUE");
     } catch (error) {
       console.log(error);
     }
+    loadContracts();
   };
 
   const disconnectWallet = async () => {
@@ -90,19 +129,34 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
     }
   };
 
-  const loadContracts = () => {};
+  const createNFTWarranty = async (product: Product, ownerAddress: string) => {
+    try {
+      const result = await client.add(JSON.stringify({ ...product }));
+      const tokenUri = `https://ipfs.infura.io/ipfs/${result}`;
+      await (
+        await platformContract!.createWarranty(
+          NFTWARRANTY_ADDRESS,
+          tokenUri,
+          ownerAddress
+        )
+      ).wait();
+      console.log("Minted new NFT Warranty");
+    } catch (error) {
+      console.log("Create NFT ERROR: ", error);
+    }
+  };
 
   const value = useMemo(
     () => ({
-      connection,
       isWeb3Enabled,
       loadContracts,
       account,
       connectWallet,
       disconnectWallet,
       loading: isWeb3EnableLoading,
+      createNFTWarranty,
     }),
-    [connection, isWeb3Enabled, account]
+    [isWeb3Enabled, account]
   );
 
   return (
@@ -110,4 +164,4 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
       {children}
     </WarrantyContext.Provider>
   );
-};
+};;;

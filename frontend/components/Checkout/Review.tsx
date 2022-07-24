@@ -1,10 +1,7 @@
-import * as React from "react";
-import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
+import React, { useContext } from "react";
+import { Typography, Button, Grid, Divider } from "@mui/material";
+import { WarrantyContext } from "../../context/WarrantyContext";
+import { ProductContext } from "../../context/ProductContext";
 
 const payments = [
   { name: "Card type", detail: "Visa" },
@@ -14,6 +11,8 @@ const payments = [
 ];
 
 export default function Review() {
+  const { createNFTWarranty } = useContext(WarrantyContext);
+  const { product } = useContext(ProductContext);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={12}>
@@ -50,6 +49,20 @@ export default function Review() {
             </div>
           ))}
         </Grid>
+        <Button
+          onClick={() => {
+            if (product) {
+              createNFTWarranty(
+                product,
+                "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199"
+              );
+            } else {
+              console.log("Product not found");
+            }
+          }}
+        >
+          MINT NFT
+        </Button>
       </Grid>
     </Grid>
   );
