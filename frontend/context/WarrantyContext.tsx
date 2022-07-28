@@ -1,8 +1,8 @@
 import React, { useEffect, useState, createContext, useMemo } from "react";
 import { NextRouter, useRouter } from "next/router";
 import { useMoralis, useWeb3Contract } from "react-moralis";
-import { Contract, ethers } from "ethers";
-import { Moralis } from "moralis";
+import { Contract } from "ethers";
+// import { Moralis } from "moralis";
 import { create } from "ipfs-http-client";
 import {
   NFTWARRANTY_ABI,
@@ -47,20 +47,18 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
     isWeb3Enabled,
     account,
     logout,
+    Moralis,
     deactivateWeb3,
     isWeb3EnableLoading,
     user,
     web3,
   } = useMoralis();
 
-  const [nftWarrantyContract, setNftWarrantyContract] =
-    useState<null | Contract>(null);
+  const [nftWarrantyContract, setNftWarrantyContract] = useState<any>(null);
 
-  const [platformContract, setPlatformContract] = useState<null | Contract>(
-    null
-  );
+  const [platformContract, setPlatformContract] = useState<any>(null);
 
-  // const [provider, setProvider] = useState<null | Web3Provider>(null);
+  const [provider, setProvider] = useState<any>();
 
   const router = useRouter();
 
@@ -85,18 +83,21 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
   const loadContracts = () => {
     try {
       console.log("Loading Contracts");
-      // const ethers = Moralis.web3Library;
-
+      const ethers = Moralis.web3Library;
+      const signer = provider.getSigner();
+      console.log("Signer Added");
       const newNftWarrantyContract = new ethers.Contract(
         NFTWARRANTY_ADDRESS,
-        NFTWARRANTY_ABI
+        NFTWARRANTY_ABI,
+        signer
       );
 
       setNftWarrantyContract(newNftWarrantyContract);
 
       const newPlatformContract = new ethers.Contract(
         PLATFORM_ADDRESS,
-        PLATFORM_ABI
+        PLATFORM_ABI,
+        signer
       );
 
       setPlatformContract(newPlatformContract);
@@ -107,9 +108,10 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
 
   const connectWallet = async () => {
     try {
-      // const web3Provider = await Moralis.enableWeb3();
-      // const signer = web3Provider.getSigner();
-      await enableWeb3();
+      const web3Provider = await enableWeb3();
+      setProvider(web3Provider);
+
+      // await enableWeb3();
       if (typeof window !== undefined)
         window.localStorage.setItem("WEB_3_CONNECTED", "TRUE");
     } catch (error) {
@@ -164,4 +166,4 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
       {children}
     </WarrantyContext.Provider>
   );
-};;;
+};

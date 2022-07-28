@@ -1,5 +1,14 @@
 import React, { useState, createContext, useMemo } from "react";
 
+export interface Product {
+  id: string;
+  name: string;
+  image: string;
+  details: string[];
+  price: number;
+  // duration of warranty
+}
+
 const products: Product[] = [
   {
     id: "product-01",
@@ -33,14 +42,6 @@ const products: Product[] = [
   },
 ];
 
-export interface Product {
-  id: string;
-  name: string;
-  image: string;
-  details: string[];
-  price: number;
-}
-
 interface ProductContextType {
   product: null | Product;
   setProduct: React.Dispatch<React.SetStateAction<Product>>;
@@ -50,7 +51,7 @@ interface ProductContextType {
 export const ProductContext = createContext<ProductContextType>({
   product: products[0],
   setProduct: () => {},
-  products: [],
+  products,
 });
 
 interface ProductProviderProps {
@@ -68,7 +69,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
       products,
       setProduct,
     }),
-    [products]
+    [product]
   );
 
   return (

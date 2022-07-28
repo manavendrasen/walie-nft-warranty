@@ -5,7 +5,7 @@ import "@nomicfoundation/hardhat-toolbox";
 const config: HardhatUserConfig = {
   networks: {
     hardhat: {
-      chainId: 1337,
+      chainId: 31337,
     },
     mumbai: {
       url: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
