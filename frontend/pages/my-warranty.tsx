@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Grid,
   Container,
@@ -17,8 +17,15 @@ import { PageHeading } from "../components/PageHeading/PageHeading";
 // - make warranty object, pass props to Warranty Card similar to Product Card
 
 const Warranty = () => {
-  const { isWeb3Enabled, connectWallet, account, loading, disconnectWallet } =
-    useContext(WarrantyContext);
+  const {
+    isWeb3Enabled,
+    connectWallet,
+    account,
+    loading,
+    disconnectWallet,
+    fetchMyNfts,
+    warranties,
+  } = useContext(WarrantyContext);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -29,14 +36,9 @@ const Warranty = () => {
     setAnchorEl(null);
   };
 
-  const warranties = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-  ];
+  useEffect(() => {
+    if (isWeb3Enabled) fetchMyNfts();
+  }, [isWeb3Enabled]);
 
   return (
     <>
@@ -114,11 +116,22 @@ const Warranty = () => {
         ) : (
           <Container sx={{ py: 4 }}>
             <Grid container spacing={2}>
-              {warranties.map(({ id }) => (
-                <Grid item md={4} key={id}>
-                  <WarrantyCard />
-                </Grid>
-              ))}
+              {loading ? (
+                <p>Loading ...</p>
+              ) : (
+                warranties &&
+                warranties.map((warranty: any) => (
+                  <Grid item md={4} key={warranty.tokenId}>
+                    <WarrantyCard
+                      details={warranty.meta.data.details}
+                      name={warranty.meta.data.name}
+                      price={warranty.meta.data.price}
+                      tokenId={warranty.tokenId}
+                      image={warranty.meta.data.image}
+                    />
+                  </Grid>
+                ))
+              )}
             </Grid>
           </Container>
         )}
