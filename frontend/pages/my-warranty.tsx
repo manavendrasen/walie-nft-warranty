@@ -146,8 +146,7 @@ const Warranty = () => {
                 >
                   ✨ Loading Your Products ✨
                 </Box>
-              ) : (
-                warranties &&
+              ) : warranties?.length > 0 ? (
                 warranties.map((warranty: any) => (
                   <Grid item md={4} key={warranty.tokenId}>
                     <WarrantyCard
@@ -160,6 +159,10 @@ const Warranty = () => {
                     />
                   </Grid>
                 ))
+              ) : (
+                <Typography textAlign="center">
+                  No Warranties Yet. 🙁
+                </Typography>
               )}
             </Grid>
           </Container>
