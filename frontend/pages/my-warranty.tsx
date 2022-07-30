@@ -142,6 +142,7 @@ const Warranty = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    textAlign: "center",
                   }}
                 >
                   ✨ Loading Your Products ✨
@@ -160,9 +161,19 @@ const Warranty = () => {
                   </Grid>
                 ))
               ) : (
-                <Typography textAlign="center">
+                <Box
+                  sx={{
+                    py: 6,
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
                   No Warranties Yet. 🙁
-                </Typography>
+                  <br /> Your warranties appear here.
+                </Box>
               )}
             </Grid>
           </Container>
