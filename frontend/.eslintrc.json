@@ -61,8 +61,8 @@
     "prefer-destructuring": "off",
     "no-case-declarations": "off",
     "react/no-children-prop": "off",
-    "no-unused-vars":"off",
-    "valid-typeof":"off",
+    "no-unused-vars": "off",
+    "valid-typeof": "off",
     "react-hooks/exhaustive-deps": "off"
   }
 }
