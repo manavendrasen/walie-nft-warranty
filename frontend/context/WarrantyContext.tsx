@@ -1,8 +1,7 @@
 import React, { useEffect, useState, createContext, useMemo } from "react";
 import { NextRouter, useRouter } from "next/router";
 import { useMoralis, useWeb3Contract } from "react-moralis";
-import { Contract } from "ethers";
-// import { Moralis } from "moralis";
+import axios from "axios";
 import { create } from "ipfs-http-client";
 import {
   NFTWARRANTY_ABI,
@@ -23,6 +22,8 @@ interface WarrantyContextType {
   disconnectWallet: () => void;
   loading: boolean;
   createNFTWarranty: (product: Product, owner: string) => void;
+  fetchMyNfts: () => void;
+  warranties: any;
 }
 
 export const WarrantyContext = createContext<WarrantyContextType>({
@@ -33,6 +34,8 @@ export const WarrantyContext = createContext<WarrantyContextType>({
   disconnectWallet: () => {},
   loading: false,
   createNFTWarranty: () => {},
+  fetchMyNfts: () => {},
+  warranties: null,
 });
 
 interface WarrantyProviderProps {
@@ -60,6 +63,8 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
 
   const [provider, setProvider] = useState<any>();
 
+  const [warranties, setWarranties] = useState<any>();
+
   const router = useRouter();
 
   useEffect(() => {
@@ -80,11 +85,12 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
     });
   }, []);
 
-  const loadContracts = () => {
+  const loadContracts = async () => {
     try {
       console.log("Loading Contracts");
       const ethers = Moralis.web3Library;
-      const signer = provider.getSigner();
+      const signer = await provider.getSigner();
+
       console.log("Signer Added");
       const newNftWarrantyContract = new ethers.Contract(
         NFTWARRANTY_ADDRESS,
@@ -134,7 +140,9 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
   const createNFTWarranty = async (product: Product, ownerAddress: string) => {
     try {
       const result = await client.add(JSON.stringify({ ...product }));
-      const tokenUri = `https://ipfs.infura.io/ipfs/${result}`;
+      const tokenUri = `https://ipfs.infura.io/ipfs/${result.path}`;
+      console.log(tokenUri, result);
+
       await (
         await platformContract!.createWarranty(
           NFTWARRANTY_ADDRESS,
@@ -148,6 +156,38 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
     }
   };
 
+  const fetchMyNfts = async () => {
+    try {
+      console.log("connecting to contract");
+      const ethers = Moralis.web3Library;
+      const signer = await provider.getSigner();
+      const newPlatformContract = new ethers.Contract(
+        PLATFORM_ADDRESS,
+        PLATFORM_ABI,
+        signer
+      );
+      console.log("fetching");
+      const filter = newPlatformContract.filters.Generated(
+        null,
+        null,
+        account,
+        null
+      );
+      // const data = await newPlatformContract.queryFilter(filter);
+
+      // console.log("contract", newPlatformContract, account);
+
+      const data = await newPlatformContract.fetchMyNFTs();
+
+      console.log(data);
+
+      // const data =
+      // setWarranties(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const value = useMemo(
     () => ({
       isWeb3Enabled,
@@ -157,6 +197,8 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
       disconnectWallet,
       loading: isWeb3EnableLoading,
       createNFTWarranty,
+      fetchMyNfts,
+      warranties,
     }),
     [isWeb3Enabled, account]
   );

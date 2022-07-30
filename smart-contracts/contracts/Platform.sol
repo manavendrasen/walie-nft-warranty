@@ -40,6 +40,13 @@ contract Platform is ReentrancyGuard {
 
         newWarranty.transferWarranty(address(this), _owner, tokenId);
 
+        console.log(
+            "sender %s, this %s, owner %s",
+            msg.sender,
+            address(this),
+            _owner
+        );
+
         itemIdToWarranty[newWarrantyItemId] = Warranty (
             newWarrantyItemId,
             tokenId,
