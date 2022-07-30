@@ -15,6 +15,10 @@ import { Product } from "./ProductContext";
 const client = create({
   url: "https://ipfs.infura.io:5001/api/v0",
 });
+
+// interface Warranty {
+
+// }
 interface WarrantyContextType {
   isWeb3Enabled: boolean;
   account: null | string;
@@ -50,34 +54,19 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
 
   const [loading, setLoading] = useState(false);
 
-  const [nftWarrantyContract, setNftWarrantyContract] = useState<any>(null);
+  const [nftWarrantyContract, setNftWarrantyContract] =
+    useState<Contract | null>(null);
 
-  const [platformContract, setPlatformContract] = useState<any>(null);
+  const [platformContract, setPlatformContract] = useState<Contract | null>(
+    null
+  );
 
-  const [provider, setProvider] = useState<any>(null);
+  const [provider, setProvider] =
+    useState<ethers.providers.Web3Provider | null>(null);
 
-  const [web3, setWeb3] = useState<any>(null);
+  const [web3, setWeb3] = useState<Web3Modal | null>(null);
 
   const [warranties, setWarranties] = useState<any>(null);
-
-  const router = useRouter();
-
-  // useEffect(() => {
-  //   if (isWeb3Enabled) return;
-  //   if (typeof window !== undefined)
-  //     if (window.localStorage.getItem("WEB_3_CONNECTED")) {
-
-  //     }
-  // }, [isWeb3Enabled]);
-
-  // useEffect(() => {
-  //   Moralis.onAccountChanged(acc => {
-  //     if (acc === null) {
-  //       window.localStorage.removeItem("WEB_3_CONNECTED");
-  //       deactivateWeb3();
-  //     }
-  //   });
-  // }, []);
 
   const connectWallet = async () => {
     try {
