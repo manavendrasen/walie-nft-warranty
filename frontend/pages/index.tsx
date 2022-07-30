@@ -111,16 +111,19 @@ const Home = () => {
                     mt: 2,
                   }}
                 >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      px: 3,
-                      py: 2,
-                    }}
-                    color="primary"
-                  >
-                    Get Started
-                  </Button>
+                  <Link href="/my-warranty/">
+                    <Button
+                      variant="contained"
+                      sx={{
+                        px: 3,
+                        py: 2,
+                      }}
+                      color="primary"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+
                   <Link href="/demo/e-commerce/">
                     <Button
                       sx={{

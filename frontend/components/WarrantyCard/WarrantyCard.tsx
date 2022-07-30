@@ -16,6 +16,7 @@ interface WarrantyCardProps {
   image: string;
   details: string[];
   price: number;
+  onTransferClick: () => void;
 }
 
 const WarrantyCard: React.FC<WarrantyCardProps> = ({
@@ -24,6 +25,7 @@ const WarrantyCard: React.FC<WarrantyCardProps> = ({
   image,
   details,
   price,
+  onTransferClick,
 }) => {
   return (
     <Card sx={{ maxWidth: 345, p: 1 }} variant="outlined">
@@ -55,7 +57,13 @@ const WarrantyCard: React.FC<WarrantyCardProps> = ({
           justifyContent: "end",
         }}
       >
-        <Button onClick={() => {}}>Transfer</Button>
+        <Button
+          onClick={() => {
+            onTransferClick();
+          }}
+        >
+          Transfer
+        </Button>
       </CardActions>
     </Card>
   );

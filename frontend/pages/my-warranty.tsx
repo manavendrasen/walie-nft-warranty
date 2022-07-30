@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Grid,
   Container,
@@ -6,12 +6,16 @@ import {
   Button,
   MenuItem,
   Menu,
+  TextField,
+  Box,
+  CircularProgress,
 } from "@mui/material";
 import Navbar from "../components/Navbar/Navbar";
 import Head from "../components/Head/Head";
 import WarrantyCard from "../components/WarrantyCard/WarrantyCard";
 import { WarrantyContext } from "../context/WarrantyContext";
 import { PageHeading } from "../components/PageHeading/PageHeading";
+import Dialog from "../components/Dialog/Dialog";
 
 // TODO:
 // - make warranty object, pass props to Warranty Card similar to Product Card
@@ -27,13 +31,27 @@ const Warranty = () => {
     warranties,
   } = useContext(WarrantyContext);
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const [transferDialogOpen, setTransferDialogOpen] = useState(false);
+
+  const handleTransferDialogClickOpen = () => {
+    setTransferDialogOpen(true);
+  };
+
+  const handleTransferDialogClose = () => {
+    setTransferDialogOpen(false);
+  };
+
+  const handleSubmit = () => {
+    console.log("transfer");
   };
 
   useEffect(() => {
@@ -89,7 +107,7 @@ const Warranty = () => {
             }}
             disabled={loading}
           >
-            {loading ? "Connecting ..." : "Connect to Wallet"}
+            {loading ? "Connecting..." : "Connect to Wallet"}
           </Button>
         )}
       </PageHeading>
@@ -117,12 +135,23 @@ const Warranty = () => {
           <Container sx={{ py: 4 }}>
             <Grid container spacing={2}>
               {loading ? (
-                <p>Loading ...</p>
+                <Box
+                  sx={{
+                    py: 6,
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <CircularProgress />
+                </Box>
               ) : (
                 warranties &&
                 warranties.map((warranty: any) => (
                   <Grid item md={4} key={warranty.tokenId}>
                     <WarrantyCard
+                      onTransferClick={handleTransferDialogClickOpen}
                       details={warranty.meta.data.details}
                       name={warranty.meta.data.name}
                       price={warranty.meta.data.price}
@@ -136,6 +165,25 @@ const Warranty = () => {
           </Container>
         )}
       </main>
+      <Dialog
+        handleClickOpen={handleTransferDialogClickOpen}
+        handleClose={handleTransferDialogClose}
+        handleSubmit={handleSubmit}
+        open={transferDialogOpen}
+        text="Enter the wallet address to transfer the warranty."
+        title="Transfer Warranty"
+      >
+        <TextField
+          required
+          id="address"
+          name="wallet"
+          label="Wallet Address"
+          fullWidth
+          autoComplete=""
+          variant="outlined"
+          size="small"
+        />
+      </Dialog>
     </>
   );
 };
