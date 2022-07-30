@@ -144,7 +144,7 @@ const Warranty = () => {
                     alignItems: "center",
                   }}
                 >
-                  <CircularProgress />
+                  ✨ Loading Your Products ✨
                 </Box>
               ) : (
                 warranties &&

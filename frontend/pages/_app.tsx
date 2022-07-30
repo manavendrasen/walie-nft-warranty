@@ -6,14 +6,17 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "../theme";
 import { WarrantyProvider } from "../context/WarrantyContext";
 import { ProductProvider } from "../context/ProductContext";
+import Loading from "../components/Loading/Loading";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <WarrantyProvider>
         <ProductProvider>
-          <CssBaseline />
-          <Component {...pageProps} />
+          <Loading>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </Loading>
         </ProductProvider>
       </WarrantyProvider>
     </ThemeProvider>
