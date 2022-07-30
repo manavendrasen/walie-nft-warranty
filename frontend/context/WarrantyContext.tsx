@@ -49,7 +49,7 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
 
   const [platformContract, setPlatformContract] = useState<any>(null);
 
-  const [provider, setProvider] = useState<any>();
+  const [web3, setWeb3] = useState<any>(null);
 
   const router = useRouter();
 
@@ -77,6 +77,8 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
         cacheProvider: true,
       });
 
+      setWeb3(web3Modal);
+
       const connection = await web3Modal.connect();
       const web3Provider = new ethers.providers.Web3Provider(connection);
 
@@ -103,8 +105,6 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
       );
 
       setPlatformContract(newPlatformContract);
-      // if (typeof window !== undefined)
-      //   window.localStorage.setItem("WEB_3_CONNECTED", "TRUE");
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -114,9 +114,8 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
 
   const disconnectWallet = async () => {
     try {
-      // if (typeof window !== undefined) {
-      //   window.localStorage.removeItem("WEB_3_CONNECTED");
-      // }
+      web3.clearCachedProvider();
+      setIsWeb3Enabled(false);
     } catch (error) {
       console.log(error);
     }
