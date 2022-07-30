@@ -2,10 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Grid, Container, Typography, Box, Button } from "@mui/material";
-import ProductCard from "../components/ProductCard/ProductCard";
-import Navbar from "../components/Navbar/Navbar";
 import Head from "../components/Head/Head";
 import Logo from "../public/android-icon-192x192.png";
+import Banner1 from "../public/home-banner1.svg";
 
 const Home = () => {
   return (
@@ -74,16 +73,18 @@ const Home = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-              height: "80vh",
+              height: "calc(100vh - 100px)",
+              py: 16,
             }}
           >
-            <Grid container spacing={3}>
+            <Grid container spacing={8}>
               <Grid
                 item
                 xs={12}
                 sm={6}
                 sx={{
                   display: "flex",
+                  mt: 4,
                   flexDirection: "column",
                   alignItems: ["center", "start"],
                   textAlign: ["center", "start"],
@@ -137,7 +138,9 @@ const Home = () => {
                   </Link>
                 </Box>
               </Grid>
-              {/* <Grid item xs={12} sm={6}></Grid> */}
+              <Grid item xs={12} sm={6}>
+                <Image src={Banner1} layout="responsive" />
+              </Grid>
             </Grid>
           </Container>
         </section>
