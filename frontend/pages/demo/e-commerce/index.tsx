@@ -21,12 +21,12 @@ const ECommerceDemo = () => {
   };
   return (
     <>
-      <Head title="Cart | E-Commerce Store" description="E-Commerce Store" />
-      <Navbar title="Cart | E-Commerce Store" />
+      <Head title="E-Commerce Store" description="E-Commerce Store" />
+      <Navbar title="E-Commerce Store" />
       <main>
         <Container sx={{ py: 12 }}>
-          <Typography variant="h5" sx={{ my: 3, fontWeight: "bold" }}>
-            Cart
+          <Typography variant="h5" sx={{ my: 3, fontWeight: "500" }}>
+            Products
           </Typography>
           <Grid container spacing={2}>
             {products.map(product => (

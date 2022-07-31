@@ -8,13 +8,22 @@ import {
   Menu,
   TextField,
   Box,
-  CircularProgress,
+  Stack,
+  Input,
+  FormControl,
+  InputAdornment,
+  InputLabel,
 } from "@mui/material";
-import Head from "../components/Head/Head";
-import WarrantyCard from "../components/WarrantyCard/WarrantyCard";
-import { WarrantyContext, WarrantyInterface } from "../context/WarrantyContext";
-import { PageHeading } from "../components/PageHeading/PageHeading";
-import Dialog from "../components/Dialog/Dialog";
+import { useRouter } from "next/router";
+import { BiSearch } from "react-icons/bi";
+import Head from "../../components/Head/Head";
+import WarrantyCard from "../../components/WarrantyCard/WarrantyCard";
+import {
+  WarrantyContext,
+  WarrantyInterface,
+} from "../../context/WarrantyContext";
+import { PageHeading } from "../../components/PageHeading/PageHeading";
+import Dialog from "../../components/Dialog/Dialog";
 
 const Warranty = () => {
   const {
@@ -29,6 +38,8 @@ const Warranty = () => {
     setWarranty,
     transferWarranty,
   } = useContext(WarrantyContext);
+
+  const router = useRouter();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -161,18 +172,56 @@ const Warranty = () => {
                 </Box>
               ) : warranties && warranties?.length > 0 ? (
                 warranties.map((w: WarrantyInterface) => (
-                  <Grid item md={4} key={w.tokenId}>
-                    <WarrantyCard
-                      onTransferClick={() => {
-                        handleTransferDialogClickOpen(w);
+                  <Box
+                    sx={{
+                      flexGrow: 1,
+                      m: 2,
+                      gap: 4,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Stack
+                      direction="row"
+                      sx={{
+                        width: "100%",
+                        flexGrow: 1,
                       }}
-                      details={w.meta.data.details}
-                      name={w.meta.data.name}
-                      price={w.meta.data.price}
-                      tokenId={w.tokenId}
-                      image={w.meta.data.image}
-                    />
-                  </Grid>
+                    >
+                      <FormControl variant="outlined" fullWidth>
+                        <TextField
+                          variant="outlined"
+                          size="small"
+                          fullWidth
+                          placeholder="Search"
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <BiSearch />
+                              </InputAdornment>
+                            ),
+                          }}
+                        />
+                      </FormControl>
+                    </Stack>
+                    <Grid item md={4} key={w.tokenId}>
+                      <WarrantyCard
+                        onTransferClick={() => {
+                          handleTransferDialogClickOpen(w);
+                        }}
+                        onLearnMore={() => {
+                          setWarranty(w);
+                          router.replace(`/my-warranty/${w.tokenId}/`);
+                        }}
+                        warrantyExpire={w.meta.data.dateOfWarrantyExpire}
+                        details={w.meta.data.details}
+                        name={w.meta.data.name}
+                        price={w.meta.data.price}
+                        tokenId={w.tokenId}
+                        image={w.meta.data.image}
+                      />
+                    </Grid>
+                  </Box>
                 ))
               ) : (
                 <Box

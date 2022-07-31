@@ -98,7 +98,7 @@ const Home = () => {
                     }}
                   >
                     {" "}
-                    protect your product.
+                    protect your products.
                   </span>
                 </Typography>
                 <Typography color="#475569" sx={{ mt: 2 }}>
