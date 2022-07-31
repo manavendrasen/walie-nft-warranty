@@ -50,7 +50,14 @@
 
 ## About The Project
 
-// Problem Statement 
+The objective is to replace the physical warranty and have block chain based warranty using NFT which will ensure authenticity and security. Our solution focuses on:
+1.  The blockchain smart contract should allow users to prove ownership
+2.  Provide the purchasing history, warranty period, and other item information
+3.  The warranty card should include the item’s serial number and upon purchase be sent to the customer’s smartphone
+4.  The NFTs should be decaying in nature, in that, after a certain period their use for the redemption of warranty benefits offered by the brand/retailer will expire
+5.  Bonus - GUI-based tool that doesn’t require knowledge of any Blockchain programming to use by Brands and Retailers
+6.  Bonus - Usage of Soulbound NFTs
+7.  Bonus - Add any engagement/gamification construct to the loyalty program
 
 ### Built With
 
@@ -65,8 +72,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Here are the steps you need to follow to use the software:
 
+have the latest version of node.js downloaded in your system.
 - npm
   ```sh
   npm install npm@latest -g
