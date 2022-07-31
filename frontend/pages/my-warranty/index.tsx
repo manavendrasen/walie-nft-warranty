@@ -10,11 +10,15 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
-import Head from "../components/Head/Head";
-import WarrantyCard from "../components/WarrantyCard/WarrantyCard";
-import { WarrantyContext, WarrantyInterface } from "../context/WarrantyContext";
-import { PageHeading } from "../components/PageHeading/PageHeading";
-import Dialog from "../components/Dialog/Dialog";
+import { useRouter } from "next/router";
+import Head from "../../components/Head/Head";
+import WarrantyCard from "../../components/WarrantyCard/WarrantyCard";
+import {
+  WarrantyContext,
+  WarrantyInterface,
+} from "../../context/WarrantyContext";
+import { PageHeading } from "../../components/PageHeading/PageHeading";
+import Dialog from "../../components/Dialog/Dialog";
 
 const Warranty = () => {
   const {
@@ -29,6 +33,8 @@ const Warranty = () => {
     setWarranty,
     transferWarranty,
   } = useContext(WarrantyContext);
+
+  const router = useRouter();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -166,6 +172,10 @@ const Warranty = () => {
                     <WarrantyCard
                       onTransferClick={() => {
                         handleTransferDialogClickOpen(w);
+                      }}
+                      onLearnMore={() => {
+                        setWarranty(w);
+                        router.replace(`/my-warranty/${w.tokenId}/`);
                       }}
                       details={w.meta.data.details}
                       name={w.meta.data.name}

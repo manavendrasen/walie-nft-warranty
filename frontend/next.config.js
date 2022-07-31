@@ -2,6 +2,9 @@
 const withPWA = require("next-pwa");
 
 const nextConfig = withPWA({
+  images: {
+    domains: ['user-images.githubusercontent.com', "picsum.photos"],
+  },
   pwa: {
     dest: "public",
     register: true,

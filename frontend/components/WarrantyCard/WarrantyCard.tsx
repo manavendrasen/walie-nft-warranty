@@ -4,7 +4,6 @@ import {
   Typography,
   CardContent,
   Card,
-  Link,
   CardMedia,
   Box,
   Button,
@@ -17,6 +16,7 @@ interface WarrantyCardProps {
   details: string[];
   price: number;
   onTransferClick: () => void;
+  onLearnMore: () => void;
 }
 
 const WarrantyCard: React.FC<WarrantyCardProps> = ({
@@ -26,6 +26,7 @@ const WarrantyCard: React.FC<WarrantyCardProps> = ({
   details,
   price,
   onTransferClick,
+  onLearnMore,
 }) => {
   return (
     <Card sx={{ maxWidth: 345, p: 1 }} variant="outlined">
@@ -54,7 +55,7 @@ const WarrantyCard: React.FC<WarrantyCardProps> = ({
       <CardActions
         sx={{
           display: "flex",
-          justifyContent: "end",
+          justifyContent: "space-between",
         }}
       >
         <Button
@@ -63,6 +64,13 @@ const WarrantyCard: React.FC<WarrantyCardProps> = ({
           }}
         >
           Transfer
+        </Button>
+        <Button
+          onClick={() => {
+            onLearnMore();
+          }}
+        >
+          Learn More
         </Button>
       </CardActions>
     </Card>
