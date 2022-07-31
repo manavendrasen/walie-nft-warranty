@@ -74,7 +74,7 @@ export default function Checkout() {
         component="h5"
         variant="h5"
         sx={{
-          fontWeight: "bold",
+          fontWeight: "500",
           mb: 2,
         }}
       >
