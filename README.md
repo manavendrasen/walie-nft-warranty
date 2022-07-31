@@ -25,7 +25,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/manavendrasen/walie-nft-warranty">
-    <img src="https://raw.githubusercontent.com/manavendrasen/walie-nft-warranty/main/frontend/public/android-icon-144x144.png?token=GHSAT0AAAAAABRUKFYTNAIMR2LMO3ATWP2YYWTJJPA" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/manavendrasen/walie-nft-warranty/main/assets/Walie%20Icon.png?token=GHSAT0AAAAAABRUKFYSE7HXMZ3KJYDK4XUYYXGWJ7Q" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Walie NFT Warranty</h3>
@@ -74,7 +74,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -92,6 +92,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
+![Architecture](/assets/Architecture.png "Architecture")
 - [Bootstrap](https://getbootstrap.com)
 - [JQuery](https://jquery.com)
 - [Laravel](https://laravel.com)
