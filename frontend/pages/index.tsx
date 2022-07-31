@@ -102,8 +102,7 @@ const Home = () => {
                   </span>
                 </Typography>
                 <Typography color="#475569" sx={{ mt: 2 }}>
-                  Irure officia pariatur culpa occaecat adipisicing eiusmod
-                  velit cupidatat ex dolor consectetur.
+                  Get your digital warranties that can not be lost!
                 </Typography>
                 <Box
                   sx={{
