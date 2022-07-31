@@ -261,15 +261,11 @@ const WarrantyDetails = () => {
             </Grid>
           </Container>
         ) : (
-          <>
-            <Container>
-              <Typography>
-                <span style={{ fontWeight: "500" }}>
-                  Could not get warranty
-                </span>
-              </Typography>
-            </Container>
-          </>
+          <Container>
+            <Typography>
+              <span style={{ fontWeight: "500" }}>Could not get warranty</span>
+            </Typography>
+          </Container>
         )}
       </main>
     </>

@@ -11,6 +11,7 @@ import {
   Chip,
 } from "@mui/material";
 import { formatDistanceToNow } from "date-fns";
+
 interface WarrantyCardProps {
   tokenId: number;
   name: string;

@@ -159,7 +159,7 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
       const tokenUri = `https://ipfs.infura.io/ipfs/${result.path}`;
       successAlert("Generated Warranty");
 
-      await(
+      await (
         await platformContract!.createWarranty(
           NFTWARRANTY_ADDRESS,
           tokenUri,
