@@ -42,9 +42,10 @@ const OrderSummary: React.FC<OrderSummaryProps> = () => {
           <Grid item xs={4}>
             <CardMedia
               component="img"
-              sx={{ m: "auto" }}
+              sx={{ m: "auto", py: 1.5 }}
               image={product.image}
               alt={product.name}
+              height={110}
             />
           </Grid>
           <Grid item xs={8}>

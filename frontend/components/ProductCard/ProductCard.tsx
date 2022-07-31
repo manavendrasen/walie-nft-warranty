@@ -26,8 +26,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <Card sx={{ maxWidth: 345, p: 1 }} variant="outlined">
-      <CardMedia component="img" height="200" image={image} alt="" />
-      <CardContent sx={{ pb: 0.5 }}>
+      <CardMedia component="img" height="250" image={image} alt="" />
+      <CardContent sx={{ pb: 0.5, pt: 2.5 }}>
         <Typography gutterBottom variant="h6" fontSize={16} component="h6">
           {name}
         </Typography>

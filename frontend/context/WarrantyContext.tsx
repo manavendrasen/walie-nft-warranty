@@ -25,6 +25,10 @@ export interface WarrantyInterface {
       image: string;
       details: string[];
       price: number;
+      yearsOfWarranty: number;
+      dateOfPurchase: Date;
+      dateOfWarrantyStart: Date;
+      dateOfWarrantyExpire: Date;
     };
   };
 }
