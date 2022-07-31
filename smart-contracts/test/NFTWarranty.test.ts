@@ -26,4 +26,12 @@ describe("NFTWarranty Test Cases", function () {
       expect(await nftWarranty.symbol()).to.equal("NFTW");
     });
   });
+
+  describe("NFTWarranty Mint", function () {
+    it("Should track minted warranty", async function () {
+      const {nftWarranty} = await loadFixture(InitSetup);
+      const newWarranty = await (await nftWarranty.mint("data")).wait();
+      expect(newWarranty).to.not.equal(null);
+    })
+  })
 });
