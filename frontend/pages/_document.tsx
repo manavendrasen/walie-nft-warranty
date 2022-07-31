@@ -6,7 +6,7 @@ const Document = () => {
     <Html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#2874f0" />
+        <meta name="theme-color" content="#4338ca" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
