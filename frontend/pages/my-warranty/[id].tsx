@@ -39,7 +39,9 @@ const WarrantyDetails = () => {
     setAnchorEl(null);
   };
 
-  if (!warranty) router.back();
+  useEffect(() => {
+    if (!warranty) router.replace("/my-warranty");
+  }, []);
 
   return (
     <>
@@ -95,71 +97,83 @@ const WarrantyDetails = () => {
         )}
       </PageHeading>
       <main>
-        <Container component="main">
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
-              <Image
-                src={warranty?.meta.data.image || "https://picsum.photos/200"}
-                width="100%"
-                height="100%"
-                layout="responsive"
-              />
-              <Typography variant="h6" textAlign="center">
-                {warranty?.meta.data.name}
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              md={8}
-              mt={4}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              <Typography variant="body1" fontWeight="500">
-                Details
-              </Typography>
-              <Divider />
-              <Typography>
-                <span style={{ fontWeight: "500" }}>Warranty Id: </span>
-                {warranty?.tokenId}
-              </Typography>
-              <Typography>
-                <span style={{ fontWeight: "500" }}>Product Id: </span>
-                {warranty?.meta.data.id}
-              </Typography>
-              <Typography>
-                <span style={{ fontWeight: "500" }}>Product Name: </span>
-                {warranty?.meta.data.name}
-              </Typography>
-
-              <Stack>
-                <Typography>
-                  <span style={{ fontWeight: "500" }}>Product Details</span>
+        {warranty ? (
+          <Container component="main">
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={4}>
+                <Image
+                  src={warranty?.meta.data.image || "https://picsum.photos/200"}
+                  width="100%"
+                  height="100%"
+                  layout="responsive"
+                />
+                <Typography variant="h6" textAlign="center">
+                  {warranty?.meta.data.name}
                 </Typography>
-                <Box
-                  sx={{
-                    fontSize: 14,
-                    color: "#334155",
-                  }}
-                >
-                  <ul>
-                    {warranty?.meta.data.details.map(detail => (
-                      <li key={detail}>{detail}</li>
-                    ))}
-                  </ul>
-                </Box>
-              </Stack>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                md={8}
+                mt={4}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 1,
+                }}
+              >
+                <Typography variant="body1" fontWeight="500">
+                  Details
+                </Typography>
+                <Divider />
+                <Typography>
+                  <span style={{ fontWeight: "500" }}>Warranty Id: </span>
+                  {warranty?.tokenId}
+                </Typography>
+                <Typography>
+                  <span style={{ fontWeight: "500" }}>Product Id: </span>
+                  {warranty?.meta.data.id}
+                </Typography>
+                <Typography>
+                  <span style={{ fontWeight: "500" }}>Product Name: </span>
+                  {warranty?.meta.data.name}
+                </Typography>
 
-              <Typography>
-                Product Price: {warranty?.meta.data.price}
-              </Typography>
+                <Stack>
+                  <Typography>
+                    <span style={{ fontWeight: "500" }}>Product Details</span>
+                  </Typography>
+                  <Box
+                    sx={{
+                      fontSize: 14,
+                      color: "#334155",
+                    }}
+                  >
+                    <ul>
+                      {warranty?.meta.data.details.map(detail => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  </Box>
+                </Stack>
+
+                <Typography>
+                  Product Price: {warranty?.meta.data.price}
+                </Typography>
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
+          </Container>
+        ) : (
+          <>
+            <Container>
+              <Typography>
+                <span style={{ fontWeight: "500" }}>
+                  Could not get warranty
+                </span>
+              </Typography>
+            </Container>
+          </>
+        )}
       </main>
     </>
   );
