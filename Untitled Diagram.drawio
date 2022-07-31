@@ -1,1 +1,82 @@
-<mxfile host="app.diagrams.net" modified="2022-07-31T14:55:51.518Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36" version="20.2.2" etag="w05kWPoA_OHxGhe9F5Wt" type="github"><diagram id="XZRmSv8jsnr1sw19fVzm">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-07-31T15:18:24.556Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36" etag="IGlO0z2dGWLvouJ0aOeM" version="20.2.2" type="github">
+  <diagram id="XZRmSv8jsnr1sw19fVzm" name="Page-1">
+    <mxGraphModel dx="2000" dy="1356" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="Frontend" id="7ozsi6IX1OwcKB7GidZz-1">
+          <mxCell style="labelBackgroundColor=#ffffff;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;dashed=1;" vertex="1" parent="1">
+            <mxGeometry x="-1140" y="40" width="510" height="580" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-49" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.287;exitY=0.002;exitDx=0;exitDy=0;startArrow=classic;startFill=1;exitPerimeter=0;" edge="1" parent="1" source="7ozsi6IX1OwcKB7GidZz-24" target="7ozsi6IX1OwcKB7GidZz-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-24" value="App" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-1084.5" y="80" width="155.5" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-38" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://uploads-ssl.webflow.com/5ddd80927946cdaa0e71d607/614bb2efff06e818e12a57f2_Screen%20Shot%202021-09-22%20at%206.49.04%20PM.png;" vertex="1" parent="1">
+          <mxGeometry x="-1610" y="180" width="520" height="443" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-39" value="NextJS" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/800px-Nextjs-logo.svg.png;" vertex="1" parent="1">
+          <mxGeometry x="-1051.75" y="100.00000000000016" width="90" height="53.83" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-40" value="ReactJS" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png;" vertex="1" parent="1">
+          <mxGeometry x="-1046.75" y="199.99999999999997" width="80" height="69.54" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-41" value="Material UI" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png;" vertex="1" parent="1">
+          <mxGeometry x="-1037.61" y="330" width="70.86" height="56.22" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-42" value="Typescript" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png;" vertex="1" parent="1">
+          <mxGeometry x="-1042.63" y="444.12" width="71.75" height="71.75" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-44" value="Metamask" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://1000logos.net/wp-content/uploads/2022/05/MetaMask-Logo.png;" vertex="1" parent="1">
+          <mxGeometry x="-1253.38" y="40" width="86.76" height="48.89" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-47" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1460" y="180" width="135.5" height="124.44" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-46" value="Browser" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://uxwing.com/wp-content/themes/uxwing/download/internet-network-technology/internet-web-browser-icon.png;" vertex="1" parent="1">
+          <mxGeometry x="-1428.2" y="208.38" width="71.9" height="67.69" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-50" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="7ozsi6IX1OwcKB7GidZz-48" target="7ozsi6IX1OwcKB7GidZz-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-48" value="Signer" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1250" y="-20" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-52" value="Provider" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-860" y="204.12" width="155.5" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-53" value="Metamask" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://1000logos.net/wp-content/uploads/2022/05/MetaMask-Logo.png;" vertex="1" parent="1">
+          <mxGeometry x="-825.6300000000001" y="332.5" width="86.76" height="48.89" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-57" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="7ozsi6IX1OwcKB7GidZz-54" target="7ozsi6IX1OwcKB7GidZz-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-54" value="Infura" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://logovectorseek.com/wp-content/uploads/2019/11/infura-inc-logo-vector.png;" vertex="1" parent="1">
+          <mxGeometry x="-832.25" y="224.11999999999998" width="100" height="55.58" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-58" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;entryX=0.676;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7ozsi6IX1OwcKB7GidZz-55" target="7ozsi6IX1OwcKB7GidZz-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1007" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-59" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="-870" y="-150" width="155.5" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-55" value="IPFS" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" vertex="1" parent="7ozsi6IX1OwcKB7GidZz-59">
+          <mxGeometry width="155.5" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="7ozsi6IX1OwcKB7GidZz-56" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/1/18/Ipfs-logo-1024-ice-text.png;" vertex="1" parent="7ozsi6IX1OwcKB7GidZz-59">
+          <mxGeometry x="21.25" y="18.5" width="113" height="113" as="geometry" />
+        </mxCell>
+        <UserObject label="Ethereum Blockchain" id="7ozsi6IX1OwcKB7GidZz-60">
+          <mxCell style="labelBackgroundColor=#ffffff;fillColor=none;verticalAlign=top;align=left;spacingLeft=10;dashed=1;" vertex="1" parent="1">
+            <mxGeometry x="-580" y="40" width="510" height="580" as="geometry" />
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
