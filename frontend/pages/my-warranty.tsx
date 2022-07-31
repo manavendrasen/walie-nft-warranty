@@ -10,15 +10,11 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
-import Navbar from "../components/Navbar/Navbar";
 import Head from "../components/Head/Head";
 import WarrantyCard from "../components/WarrantyCard/WarrantyCard";
-import { WarrantyContext } from "../context/WarrantyContext";
+import { WarrantyContext, WarrantyInterface } from "../context/WarrantyContext";
 import { PageHeading } from "../components/PageHeading/PageHeading";
 import Dialog from "../components/Dialog/Dialog";
-
-// TODO:
-// - make warranty object, pass props to Warranty Card similar to Product Card
 
 const Warranty = () => {
   const {
@@ -29,6 +25,9 @@ const Warranty = () => {
     disconnectWallet,
     fetchMyNfts,
     warranties,
+    warranty,
+    setWarranty,
+    transferWarranty,
   } = useContext(WarrantyContext);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -41,8 +40,18 @@ const Warranty = () => {
   };
 
   const [transferDialogOpen, setTransferDialogOpen] = useState(false);
+  const [transferAddress, setTransferAddress] = useState<string | null>(null);
 
-  const handleTransferDialogClickOpen = () => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTransferAddress(event.target.value);
+  };
+
+  const handleTransferDialogClickOpen = (
+    selectedWarranty: WarrantyInterface
+  ) => {
+    setWarranty(selectedWarranty);
+    console.log(selectedWarranty);
+
     setTransferDialogOpen(true);
   };
 
@@ -51,7 +60,11 @@ const Warranty = () => {
   };
 
   const handleSubmit = () => {
-    console.log("transfer");
+    handleTransferDialogClose();
+    console.log(warranty);
+    if (transferAddress && warranty)
+      transferWarranty(transferAddress, warranty.tokenId);
+    else console.log("Address not provided");
   };
 
   useEffect(() => {
@@ -147,16 +160,18 @@ const Warranty = () => {
                 >
                   ✨ Loading Your Products ✨
                 </Box>
-              ) : warranties?.length > 0 ? (
-                warranties.map((warranty: any) => (
-                  <Grid item md={4} key={warranty.tokenId}>
+              ) : warranties && warranties?.length > 0 ? (
+                warranties.map((w: WarrantyInterface) => (
+                  <Grid item md={4} key={w.tokenId}>
                     <WarrantyCard
-                      onTransferClick={handleTransferDialogClickOpen}
-                      details={warranty.meta.data.details}
-                      name={warranty.meta.data.name}
-                      price={warranty.meta.data.price}
-                      tokenId={warranty.tokenId}
-                      image={warranty.meta.data.image}
+                      onTransferClick={() => {
+                        handleTransferDialogClickOpen(w);
+                      }}
+                      details={w.meta.data.details}
+                      name={w.meta.data.name}
+                      price={w.meta.data.price}
+                      tokenId={w.tokenId}
+                      image={w.meta.data.image}
                     />
                   </Grid>
                 ))
@@ -180,7 +195,6 @@ const Warranty = () => {
         )}
       </main>
       <Dialog
-        handleClickOpen={handleTransferDialogClickOpen}
         handleClose={handleTransferDialogClose}
         handleSubmit={handleSubmit}
         open={transferDialogOpen}
@@ -196,6 +210,7 @@ const Warranty = () => {
           autoComplete=""
           variant="outlined"
           size="small"
+          onChange={handleChange}
         />
       </Dialog>
     </>

@@ -14,7 +14,6 @@ interface DialogProps {
   title: string;
   text: string;
   open: boolean;
-  handleClickOpen: () => void;
   handleClose: () => void;
   handleSubmit: () => void;
   children: React.ReactNode;
@@ -24,7 +23,6 @@ const Dialog: React.FC<DialogProps> = ({
   title,
   text,
   open,
-  handleClickOpen,
   handleClose,
   handleSubmit,
   children,

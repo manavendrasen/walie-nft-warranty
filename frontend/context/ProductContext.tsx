@@ -7,6 +7,7 @@ export interface Product {
   details: string[];
   price: number;
   // duration of warranty
+  yearsOfWarranty: number;
 }
 
 const products: Product[] = [
@@ -24,6 +25,7 @@ const products: Product[] = [
       "1 Year Limited Warranty",
     ],
     price: 140000,
+    yearsOfWarranty: 2,
   },
   {
     id: "product-02",
@@ -39,6 +41,7 @@ const products: Product[] = [
       "1 Year Limited Warranty",
     ],
     price: 140000,
+    yearsOfWarranty: 4,
   },
 ];
 
