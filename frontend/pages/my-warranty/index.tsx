@@ -90,7 +90,7 @@ const Warranty = () => {
       />
       <PageHeading
         heading="My Warranties"
-        subHeading="view your warranties from the security of your wallet"
+        subHeading="View your warranties here powered by the security of web3."
       >
         {isWeb3Enabled ? (
           <>
@@ -150,9 +150,7 @@ const Warranty = () => {
             }}
           >
             <Typography variant="h5">Connect your wallet</Typography>
-            <Typography color="#475569">
-              just a few clicks away!
-            </Typography>
+            <Typography color="#475569">just a few clicks away!</Typography>
           </Container>
         ) : (
           <Container sx={{ py: 4 }}>

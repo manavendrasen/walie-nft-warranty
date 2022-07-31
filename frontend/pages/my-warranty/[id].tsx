@@ -57,7 +57,7 @@ const WarrantyDetails = () => {
       />
       <PageHeading
         heading="My Warranties"
-        subHeading="Aliqua aliquip ullamco aliquip nostrud laborum nulla pariatur nulla dolore laboris voluptate laboris veniam in."
+        subHeading="View your warranties here powered by the security of web3."
       >
         {isWeb3Enabled ? (
           <>

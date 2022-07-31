@@ -102,7 +102,8 @@ const Home = () => {
                   </span>
                 </Typography>
                 <Typography color="#475569" sx={{ mt: 2 }}>
-                  Get your digital warranties that can not be lost!
+                  Secure Hassle-free Paperless digital warranties for your
+                  physical products.
                 </Typography>
                 <Box
                   sx={{
