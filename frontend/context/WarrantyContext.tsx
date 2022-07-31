@@ -119,7 +119,7 @@ export const WarrantyProvider: React.FC<WarrantyProviderProps> = ({
       if (connection) setIsWeb3Enabled(true);
     } catch (error) {
       setLoading(false);
-      errorAlert("Could Not Connect to Wallet");
+      errorAlert("Could Not Connect Wallet");
       console.log(error);
     }
   };

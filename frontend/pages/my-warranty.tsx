@@ -120,7 +120,7 @@ const Warranty = () => {
             }}
             disabled={loading}
           >
-            {loading ? "Connecting..." : "Connect to Wallet"}
+            {loading ? "Connecting..." : "Connect Wallet"}
           </Button>
         )}
       </PageHeading>

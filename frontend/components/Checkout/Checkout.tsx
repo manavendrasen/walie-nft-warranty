@@ -173,7 +173,7 @@ export default function Checkout() {
                     }}
                     disabled={loading}
                   >
-                    {loading ? "Connecting ..." : "Connect to Wallet"}
+                    {loading ? "Connecting ..." : "Connect Wallet"}
                   </Button>
                 )}
               </Stack>
