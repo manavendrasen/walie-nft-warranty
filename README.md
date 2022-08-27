@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/manavendrasen/walie-nft-warranty">
-    <img src="https://raw.githubusercontent.com/manavendrasen/walie-nft-warranty/main/assets/Walie%20Icon.png?token=GHSAT0AAAAAABRUKFYSE7HXMZ3KJYDK4XUYYXGWJ7Q" alt="Logo" width="80" height="80">
+    <img src="https://github.com/manavendrasen/walie-nft-warranty/blob/main/assets/Walie%20Icon.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Walie NFT Warranty</h3>
@@ -11,40 +11,15 @@
   <p align="center">
     An awesome README template to jumpstart your projects!
     <br />
-    <a href="https://github.com/manavendrasen/walie-nft-warranty"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/manavendrasen/walie-nft-warranty">View Demo</a>
+    <a href="https://youtu.be/Jy_3vaKVqUI">View Demo Video</a>
     ·
-    <a href="https://github.com/manavendrasen/walie-nft-warranty/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/manavendrasen/walie-nft-warranty/issues">Request Feature</a>
+    <a href="https://github.com/manavendrasen/walie-nft-warranty">Live (use Polygon Mumbai Testnet)</a>
   </p>
 </p>
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://walie.manavendrasen.com)
 [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://walie.manavendrasen.com)
 
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
 
 <!-- ABOUT THE PROJECT -->
 
